@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University Paderborn Beamer Presentation 
+
+% Author: Ashwin Prasad Shivarpatna Venkatesh 
+
+%This template is free: you can redistribute it and/or modify
+%it under the terms of the GNU General Public License as published by
+%the Free Software Foundation, either version 3 of the License, or any later version.
+%
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%GNU General Public License for more details.
+%
+%You should have received a copy of the GNU General Public License
+%along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+% Default page size 12.8cm x 9.6cm
+
+% import packages and user-defined commands
+\input{internal/packages}
+\input{internal/commands}
+\input{internal/upb-unicolors}
+\input{internal/upb-theme}
+\input{presentation-details}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+{
+\upbtitlebackground 
+\begin{frame}
+%\upblogo
+\titlepage % Print the title page as the first slide
+\end{frame}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Goals}
+\begin{itemize}
+	\item Hands-on experiments with tools\\
+	\begin{itemize}
+		\item Open Source MANO (OSM) / Sonata
+		\item OpenStack
+		\item Ubuntu Cloud Image
+		\item Cloud-init
+		\item ...
+	\end{itemize} \pause
+	\item Build and deploy a complex service in virtual environment\pause
+	\item Get \textbf{Servce Function Chaining:} VNF Forwarding Graph to work (?)	
+	\begin{itemize}
+		\item Currently unstable in OSM, could lead to a pull request
+	\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\Huge{\centerline{Scenario}}
+\end{frame}
+
+
+\begin{frame}
+\begin{onlyenv}<1>
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/1}
+		\label{fig:1}
+	\end{figure}
+	
+\end{onlyenv}
+
+\begin{onlyenv}<2>
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/2}
+		\label{fig:2}
+	\end{figure}
+	
+\end{onlyenv}
+
+\begin{onlyenv}<3>
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/3}
+		\label{fig:3}
+	\end{figure}
+	
+\end{onlyenv}
+
+
+\end{frame}
+
+
+
+
+%------------------------------------------------
+
+\begin{frame}
+
+\Huge{\centerline{Plan}}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Plan | Progress so far...}
+
+
+\begin{enumerate}
+	\item \textbf{Environment Setup}\\
+	\begin{itemize}
+		\item OSM Release 5
+		\item DevStack Ocata (OpenStack for dev)
+	\end{itemize} \pause
+
+	\item \textbf{Virtual Function Preparation}\\
+	\begin{itemize}
+		\item Base Image - Ubuntu Cloud Image 16.04
+		\item Load Balancer - HAProxy
+		\item Web Server - Nginx		
+	\end{itemize} \pause
+
+	\item \textbf{Descriptor Creation}\\
+	\begin{itemize}
+		\item Network Service Descriptor (NSD)
+		\item Virtual Network Function Descriptor (VNFD)
+		\item OSM provides a tool		
+	\end{itemize} \pause
+	
+\end{enumerate}
+
+\begin{onlyenv}<4>
+	
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[drop shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (current page.center) {\includegraphics[width=11cm]{images/vnfd-snippet}};
+	\end{tikzpicture}
+	
+\end{onlyenv}
+
+\begin{onlyenv}<5>
+	
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[drop shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (current page.center) {\includegraphics[width=11cm]{images/nsd-snip}};
+	\end{tikzpicture}
+	
+\end{onlyenv}
+
+\end{frame}
+
+
+\begin{frame}
+
+\Huge{\centerline{What's Left?}}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{What's Left?}
+
+\begin{enumerate}
+	\item \textbf{Integration | 1 week}\\
+	\begin{itemize}
+		\item NSD and VNFD
+		\item cloud-init scripts
+	\end{itemize} \pause
+
+	\item \textbf{Forwarding Graphs | 2 weeks}\\
+	\begin{itemize}
+		\item Investigate further..
+	\end{itemize} \pause
+	
+	\item \textbf{Testing and Documentation | 1 week}\\
+	
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{GitHub}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/gihubqr}
+	\label{fig:gihubqr}
+\end{figure}
+
+\large{\centerline{\textbf{ashwinprasadme}/Future-Internet-SS19-Mini-Project}}
+
+\end{frame}
+
+\end{document} 
