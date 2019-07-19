@@ -1,0 +1,195 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University Paderborn Beamer Presentation 
+
+% Author: Ashwin Prasad Shivarpatna Venkatesh 
+
+%This template is free: you can redistribute it and/or modify
+%it under the terms of the GNU General Public License as published by
+%the Free Software Foundation, either version 3 of the License, or any later version.
+%
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%GNU General Public License for more details.
+%
+%You should have received a copy of the GNU General Public License
+%along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+% Default page size 12.8cm x 9.6cm
+
+% import packages and user-defined commands
+\input{internal/packages}
+\input{internal/commands}
+\input{internal/upb-unicolors}
+\input{internal/upb-theme}
+\input{presentation-details}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+{
+\upbtitlebackground 
+\begin{frame}
+%\upblogo
+\titlepage % Print the title page as the first slide
+\end{frame}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Goals}
+\begin{itemize}
+	\item Build and deploy a complex service in virtual environment using...
+	\begin{itemize}
+		\item Open Source MANO (OSM)
+		\item OpenStack
+		\item Ubuntu Cloud Image
+		\item Cloud-init
+	\end{itemize}	
+
+	\item Experiment with \textbf{Servce Function Chaining:} VNF Forwarding Graph
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\Huge{\centerline{Scenario}}
+\end{frame}
+
+
+\begin{frame}
+\begin{onlyenv}<1>
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/3}
+		\label{fig:3}
+	\end{figure}
+	
+\end{onlyenv}
+
+\begin{onlyenv}<2>
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/4}
+		\label{fig:2}
+	\end{figure}
+	
+\end{onlyenv}
+
+
+\end{frame}
+
+
+
+
+%------------------------------------------------
+
+\begin{frame}
+
+\Huge{\centerline{Demo}}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Demo}
+
+
+\begin{enumerate}
+	\item \textbf{OSM Dashboard} (Orchestrator)\\
+	\begin{itemize}
+		\item Descriptors, Graphs
+		\item Service instantiation workflow
+	\end{itemize} \pause
+
+	\item \textbf{OpenStack Dashboard} (Infrastructure Manager)\\
+	\begin{itemize}
+		\item Running instances, Logs
+		\item IP of instances		
+	\end{itemize} \pause
+
+	\item \textbf{Testing Scenario}\\
+	\begin{itemize}
+		\item SSH into running instances
+		\item curl to the load balancer
+		\item \textbf{SFC Demo:} tcpdump
+	\end{itemize} \pause
+	
+\end{enumerate}
+
+
+\begin{onlyenv}<4>
+	
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[drop shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (current page.center) {\includegraphics[width=11cm]{images/4}};
+	\end{tikzpicture}
+	
+\end{onlyenv}
+
+
+\end{frame}
+
+
+\begin{frame}
+
+\Huge{\centerline{Issues?}}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Issues}
+
+\begin{enumerate}
+	\item \textbf{SFC chaining not working from OSM}\\
+	\begin{itemize}
+		\item VNFFG description not stable in OSM
+		\item What I tried
+		\begin{itemize}
+			\item OSM Release 5, 6, Master
+			\item OpenStack newton, ocata, queens
+			\item Different NSD, VNFD (Intern Project)
+		\end{itemize}
+	\end{itemize} \pause
+
+	\item \textbf{VNF Configuration using ``Charms"}\\
+	\begin{itemize}
+		\item OSM Provides post instantiation configuration 
+		\item Node IP configuration on HAProxy is now static
+	\end{itemize} 
+	
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{GitHub}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/gihubqr}
+	\label{fig:gihubqr}
+\end{figure}
+
+\large{\centerline{\textbf{ashwinprasadme}/Future-Internet-SS19-Mini-Project}}
+
+\end{frame}
+
+\end{document} 
