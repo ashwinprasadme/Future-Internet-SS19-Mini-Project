@@ -1,0 +1,42 @@
+#cloud-config
+apt_update: true
+packages:
+  - nginx
+
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLj02cPcnCw3tRB9eaP7JKInUZB1nS3PA7vuMvP0k2PLmPLCBxCPCGmzQ1KNh5W5K1Z+3X71jLIXBMRGY30LvdVvCE1txbOQN9FexhtgDl0k5tyViRmoVmnw4ajlLiOmN32G7flGkNusbeRxKzZ09nV+ahJrVOvIIYr4ouJBx+wtNHKgk5l+PK9asO9ACAjBOo8oJ43lxlaBVaZwSty1GgEQpcsMTcuTg1UEdDrIE673S3RXofn2Gbv+EFiKPTzM91Kc1/2XrE59SktbFZbqauSJmqnnvB0KcmdIzv+9jikRzLrNDlACAmrEbIurpwItyzEKcu5SUeM2Oi2K4x0L/1 stack@vm-hadik3r-14
+
+write_files:
+  - path: /home/ubuntu/multinic.sh
+    content: |
+      #!/bin/bash
+      hname=$(hostname)
+      cat /etc/hosts | grep $hname >> /dev/null
+      if [ $? -ne 0 ];then
+      sudo bash -c "echo '127.0.0.1 $hname' >> /etc/hosts"
+      fi
+      netfile=$(find /etc/network/interfaces.d -name "*.cfg")
+      for interface in $(ls -1 /sys/class/net | grep ens) ;do
+        cat $netfile | grep $interface >> /dev/null
+        if [ $? -ne 0 ];then
+          sudo bash -c "echo 'auto $interface' >> ${netfile}"
+          sudo bash -c "echo 'iface $interface inet dhcp' >> ${netfile}"
+          sudo ifup $interface
+        fi
+      done
+  - path: /var/www/html/index.nginx-debian.html
+    content: |                                                         
+      .oPYo.                                            .oPYo. 
+      8                                                     `8 
+      `Yooo. .oPYo. oPYo. o    o .oPYo. oPYo.              oP' 
+          `8 8oooo8 8  `' Y.  .P 8oooo8 8  `'   ooooo   .oP'   
+          8 8.     8     `b..d' 8.     8               8'     
+      `YooP' `Yooo' 8      `YP'  `Yooo' 8               8ooooo 
+      :.....::.....:..::::::...:::.....:..::::::::::::::.......
+      :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+      :::::::::::::::::::::::::::::::::::::::::::::::::::::::::                                                                                                                                          
+
+runcmd:
+  - [ "chown", "ubuntu:ubuntu", "/home/ubuntu/multinic.sh" ]
+  - [ "chmod", "+x", "/home/ubuntu/multinic.sh" ]      
+  - [ "/home/ubuntu/multinic.sh" ]     

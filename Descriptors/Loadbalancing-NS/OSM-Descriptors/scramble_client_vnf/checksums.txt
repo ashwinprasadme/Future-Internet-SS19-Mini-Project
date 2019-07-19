@@ -1,0 +1,3 @@
+cd094f310296987904aae1ccfafc0527  scramble_client_vnfd.yaml
+a17b13f962602095a23bd7c986150022  cloud_init/cloud-config.txt
+bc681c5a4c3cdc09c013df2d2239f3d2  icons/osm.png
